@@ -3,7 +3,20 @@
 <head>
     <title>Computer Magic</title>
 </head>
-<body>hello world
+<body>hello world <br />
+    <canvas id="scene" width="500" height="500"></canvas>
+    <script>
+        const canvas = document.getElementById("scene");
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#faf8f2";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Простой закрашенный прямоугольник
+        ctx.fillStyle = "#4f8cff";
+        ctx.fillRect(30, 110, 160, 90);
+        ctx.fillStyle = "#222";
+        ctx.font = "28px sans-serif";
+        ctx.fillText("Hello Canvas!", 30, 50);
+    </script>
 </body>
 </html>
 
