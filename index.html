@@ -3,19 +3,46 @@
 <head>
     <title>Computer Magic</title>
 </head>
-<body>hello world <br />
-    <canvas id="scene" width="500" height="500"></canvas>
+<body>it may change at every saturday or sunday 16:30 - 18:00 <br />
+    <canvas id="scene" width="650" height="500"></canvas>
     <script>
         const canvas = document.getElementById("scene");
         const ctx = canvas.getContext("2d");
+        // фон
         ctx.fillStyle = "#faf8f2";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        // Простой закрашенный прямоугольник
-        ctx.fillStyle = "#4f8cff";
+        // рамка
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(20, 100, 180, 110);
+        // экран       
+        ctx.fillStyle = "#4f4f4f";
         ctx.fillRect(30, 110, 160, 90);
-        ctx.fillStyle = "#222";
-        ctx.font = "28px sans-serif";
-        ctx.fillText("Hello Canvas!", 30, 50);
+        // текст 
+        ctx.fillStyle = "#321";
+        ctx.font = "15px sans-serif"; 
+        ctx.fillText("КОМП ПОЛНОСТЬЮ доделать: мышка, клавиатура, системный блок, ножка монитора", 0, 50);
+        // круг
+        ctx.beginPath();
+        ctx.arc(350, 150, 50, 0, Math.PI * 2, true);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(350, 260, 5, 75, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(315, 380, 5, 60, Math.PI / 5, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(386, 380, 5, 60, -Math.PI / 5, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(310, 210, 5, 60, -Math.PI / 5, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(390, 210, 5, 60, Math.PI / 5, 0, 2 * Math.PI);
+        ctx.fill();
+
+        
+        
     </script>
 </body>
 </html>
