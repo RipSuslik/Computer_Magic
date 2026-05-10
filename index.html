@@ -4,13 +4,14 @@
     <title>Computer Magic</title>
 </head>
 <body>it may change at every saturday or sunday 16:30 - 18:00 <br />
-    <canvas id="scene" width="650" height="500"></canvas>
+    <canvas id="scene" width="800" height="500"></canvas>
     <script>
         const canvas = document.getElementById("scene");
         const ctx = canvas.getContext("2d");
-        // фон
-        ctx.fillStyle = "#faf8f2";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        (function drawBackground(color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }) ("#c2c2c2");
         // рамка
         ctx.fillStyle = "#000000";
         ctx.fillRect(20, 100, 180, 110);
@@ -76,11 +77,16 @@
         ctx.fillStyle = "#000000"
         ctx.arc(80, 435, 40, 0, Math.PI * 2, true);
         ctx.fill();
-        
-        // текст 
-        ctx.fillStyle = "#321";
-        ctx.font = "15px sans-serif"; 
-        ctx.fillText("КОМП ПОЛНОСТЬЮ доделать: мышка, клавиатура, системный блок, ножка монитора", 0, 50);
+        function drawText(text, x, y) { 
+            ctx.fillStyle = "#321";
+            ctx.font = "15px sans-serif"; 
+            ctx.fillText(text, x, y);
+        }
+        drawText("[done] КОМП ПОЛНОСТЬЮ доделать: мышка, клавиатура, системный блок, ножка монитора", 0, 15);
+        drawText("[info] ffffff - белый 000000 - черный первые 2 - красный, вторые - зеленый, третие - синй", 0, 30)
+        drawText("[info] шрифты бывают разные, в коде- все символы одинаковой ширины, в нашей картинке - нет", 0, 45 )
+        drawText("[info] функции позволяют работать с параметрами, с помощью нее можно дать куску кода имя", 0, 60 )
+        drawText("[todo] весь код в функции (пример на 80 строке)", 0, 75 )
         // человек
         ctx.beginPath();
         ctx.arc(350, 150, 50, 0, Math.PI * 2, true);
