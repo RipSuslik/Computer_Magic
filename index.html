@@ -5,109 +5,135 @@
 </head>
 <body>it may change at every saturday or sunday 16:30 - 18:00 <br />
     <canvas id="scene" width="800" height="500"></canvas>
-    <script>
+    <script> 
         const canvas = document.getElementById("scene");
         const ctx = canvas.getContext("2d");
         (function drawBackground(color) {
             ctx.fillStyle = color;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         }) ("#c2c2c2");
-        // рамка
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(20, 100, 180, 110);
-        // экран       
-        ctx.fillStyle = "#4f4f4f";
-        ctx.fillRect(30, 110, 160, 90);
-        // ножка
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(95, 200, 30, 20);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(60, 220, 100, 10);
-        // клавиатура
-        ctx.fillStyle = "#808080";
-        ctx.fillRect(30, 240, 160, 40);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(70, 245, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(90, 245, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(52.5, 245, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(110, 245, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(130, 245, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(35, 245, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(150, 245, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(170, 245, 15, 15);
-        ctx.fillRect(70, 262, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(90, 262, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(52.5, 262, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(110, 262, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(130, 262, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(35, 262, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(150, 262, 15, 15);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(170, 262, 15, 15);
-        // мышка
-        ctx.fillStyle = "#808080";
-        ctx.fillRect(200, 240, 20, 40);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(201, 240, 7, 17);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(211, 240, 7, 17);
-        ctx.ellipse(209.5, 254, 1, 10, 0, 0, 2 * Math.PI);
-        ctx.fill();
-        // блок
-        ctx.fillStyle = "#333333";
-        ctx.fillRect(30, 290, 100, 200);
-        ctx.beginPath();
-        ctx.fillStyle = "#000000"
-        ctx.arc(80, 340, 40, 0, Math.PI * 2, true);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.fillStyle = "#000000"
-        ctx.arc(80, 435, 40, 0, Math.PI * 2, true);
-        ctx.fill();
         function drawText(text, x, y) { 
             ctx.fillStyle = "#321";
             ctx.font = "15px sans-serif"; 
             ctx.fillText(text, x, y);
         }
+        function drawRectangle(color, x, y, widht, height){
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, widht, height);
+        }
+        function drawMonitor(){
+            // рамка
+            drawRectangle("#000000", 20, 100, 180, 110);
+            // экран       
+            ctx.fillStyle = "#4f4f4f";
+            ctx.fillRect(30, 110, 160, 90);
+            // ножка
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(95, 200, 30, 20);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(60, 220, 100, 10);       
+        }
+        function drawKeyboard(){
+            // клавиатура
+            ctx.fillStyle = "#808080";
+            ctx.fillRect(30, 240, 160, 40);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(70, 245, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(90, 245, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(52.5, 245, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(110, 245, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(130, 245, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(35, 245, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(150, 245, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(170, 245, 15, 15);
+            ctx.fillRect(70, 262, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(90, 262, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(52.5, 262, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(110, 262, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(130, 262, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(35, 262, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(150, 262, 15, 15);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(170, 262, 15, 15);
+        }
+        function drawMouse(){
+            // мышка
+            drawRectangle("#808080", 200, 240, 20, 40) 
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(201, 240, 7, 17);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(211, 240, 7, 17);
+            ctx.ellipse(209.5, 254, 1, 10, 0, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+        function drawBlock(){
+            // блок
+            ctx.fillStyle = "#333333";
+            ctx.fillRect(30, 290, 100, 200);
+            ctx.beginPath();
+            ctx.fillStyle = "#000000"
+            ctx.arc(80, 340, 40, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.fillStyle = "#000000"
+            ctx.arc(80, 435, 40, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.fillStyle = "#333333";
+            ctx.fillRect(30, 290, 100, 200);
+            ctx.beginPath();
+            ctx.fillStyle = "#000000"
+            ctx.arc(80, 340, 40, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.fillStyle = "#000000"
+            ctx.arc(80, 435, 40, 0, Math.PI * 2, true);
+            ctx.fill();
+        }
         drawText("[done] КОМП ПОЛНОСТЬЮ доделать: мышка, клавиатура, системный блок, ножка монитора", 0, 15);
         drawText("[info] ffffff - белый 000000 - черный первые 2 - красный, вторые - зеленый, третие - синй", 0, 30)
         drawText("[info] шрифты бывают разные, в коде- все символы одинаковой ширины, в нашей картинке - нет", 0, 45 )
         drawText("[info] функции позволяют работать с параметрами, с помощью нее можно дать куску кода имя", 0, 60 )
-        drawText("[todo] весь код в функции (пример на 80 строке)", 0, 75 )
-        // человек
-        ctx.beginPath();
-        ctx.arc(350, 150, 50, 0, Math.PI * 2, true);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.ellipse(350, 260, 5, 75, 0, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.ellipse(315, 380, 5, 60, Math.PI / 5, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.ellipse(386, 380, 5, 60, -Math.PI / 5, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.ellipse(310, 210, 5, 60, -Math.PI / 5, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.ellipse(390, 210, 5, 60, Math.PI / 5, 0, 2 * Math.PI);
-        ctx.fill();
-        
-        
+        drawText("[done] весь код в функции (пример функция drawText)", 0, 75 )
+        drawText("[todo] ПОПРОБОВАТЬ переписать клавиатуру на цикл если что то непонятно написать о ошибке и закоммитить", 0, 90)
+        function drawHuman(){
+            // человек 
+            ctx.beginPath();
+            ctx.arc(350, 150, 50, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(350, 260, 5, 75, 0, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(315, 380, 5, 60, Math.PI / 5, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(386, 380, 5, 60, -Math.PI / 5, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(310, 210, 5, 60, -Math.PI / 5, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(390, 210, 5, 60, Math.PI / 5, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+        drawMonitor();
+        drawKeyboard();
+        drawMouse();
+        drawBlock();
+        drawHuman();
         
         
         
