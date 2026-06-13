@@ -32,38 +32,51 @@
             ctx.fillRect(95, 200, 30, 20);
             ctx.fillStyle = "#000000";
             ctx.fillRect(60, 220, 100, 10);
-        function drawKlavishi(){
+        }
+        function drawKeys(keyboardWidht, keysNumber){
             // как я вижу это на питоне
-            //coordinates = [50, 240, 160, 40]
-            //while coordinates [0] <= 170
+            //coordinates = [30, 245, 15, 15]
+            //while coordinates[0] <= 170
             //      coordinates[0] += 20
+            //      while coordinates[1] <= 262
+            //          coordinates[1] += 17
             //пока что на новом языке я не знаю как писать циклы но я попытался
-            //я заметил что первый пункт повышается на 20 много раз в клавиатуре от 50 прибавляем 20 и так до 170
+            //я заметил что первый пункт повышается на 20 много раз в клавиатуре от 30 прибавляем 20 и так до 170
             //таких цепочек 2: одна где высота 240 другая где 262
             //из хорошего я не использовал i и сделал новую технику с += и <= (прочитал что так можно в интернете)
-        }       
+            let color = "#000000"; 
+            let x = 30;
+            let y = 245;
+            let keyWidht = 15;
+            let height = 15;
+            drawRectangle(color, x, y, keyWidht, height);
+            drawRectangle(color, x + keyWidht + 10, y, keyWidht, height);
+            
+            //ctx.fillStyle = "#000000";
+            //ctx.fillRect(70, 245, 15, 15);
+            //ctx.fillRect(90, 245, 15, 15);
+            //ctx.fillRect(110, 245, 15, 15);
+            //ctx.fillRect(130, 245, 15, 15);
+            //ctx.fillRect(150, 245, 15, 15);
+            //ctx.fillRect(170, 245, 15, 15);
+            //ctx.fillRect(30, 262, 15, 15);
+            //ctx.fillRect(50, 262, 15, 15);
+            //ctx.fillRect(70, 262, 15, 15);
+            //ctx.fillRect(90, 262, 15, 15);
+            //ctx.fillRect(110, 262, 15, 15);
+            //ctx.fillRect(130, 262, 15, 15);
+            //ctx.fillRect(150, 262, 15, 15);
+            //ctx.fillRect(170, 262, 15, 15);
         }
         function drawKeyboard(){
             // клавиатура
-            ctx.fillStyle = "#808080";
-            ctx.fillRect(30, 240, 160, 40);
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(35, 245, 15, 15);
-            ctx.fillRect(35, 262, 15, 15);
-            ctx.fillRect(50, 245, 15, 15);
-            ctx.fillRect(70, 245, 15, 15);
-            ctx.fillRect(90, 245, 15, 15);
-            ctx.fillRect(110, 245, 15, 15);
-            ctx.fillRect(130, 245, 15, 15);
-            ctx.fillRect(150, 245, 15, 15);
-            ctx.fillRect(170, 245, 15, 15);
-            ctx.fillRect(50, 262, 15, 15);
-            ctx.fillRect(70, 262, 15, 15);
-            ctx.fillRect(90, 262, 15, 15);
-            ctx.fillRect(110, 262, 15, 15);
-            ctx.fillRect(130, 262, 15, 15);
-            ctx.fillRect(150, 262, 15, 15);
-            ctx.fillRect(170, 262, 15, 15);
+            let color = "#808080";
+            let x = 25;
+            let y = 240;
+            let widht = 165;
+            let height = 40;
+            drawRectangle(color, x, y, widht, height);
+            drawKeys(widht, 8);
         }
         function drawMouse(){
             // мышка
@@ -102,8 +115,10 @@
         drawText("[info] ffffff - белый 000000 - черный первые 2 - красный, вторые - зеленый, третие - синй", 0, 30)
         drawText("[info] шрифты бывают разные, в коде- все символы одинаковой ширины, в нашей картинке - нет", 0, 45 )
         drawText("[info] функции позволяют работать с параметрами, с помощью нее можно дать куску кода имя", 0, 60 )
-        drawText("[done] весь код в функции (пример функция drawText)", 0, 75 )
-        drawText("[todo] ПОПРОБОВАТЬ переписать клавиатуру на цикл если что то непонятно написать о ошибке и закоммитить", 0, 90)
+        drawText("[info] переменные пишутся через let (как в питоне только с let в начале)", 0, 75 );
+        drawText("[info] циклы через while (условие){комманды}", 0, 60 )
+        drawText("[done] весь код в функции (пример функция drawText)", 0, 75 );
+        drawText("[todo] продолжить переписать клавиатуру на цикл если что то непонятно написать о ошибке и закоммитить", 0, 90)
         function drawHuman(){
             // человек 
             ctx.beginPath();
