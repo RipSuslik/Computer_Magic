@@ -33,7 +33,7 @@
             ctx.fillStyle = "#000000";
             ctx.fillRect(60, 220, 100, 10);
         }
-        function drawKeys(keyboardWidht, keysNumber){
+                    function drawKeys(){
             // как я вижу это на питоне
             //coordinates = [30, 245, 15, 15]
             //while coordinates[0] <= 170
@@ -44,14 +44,23 @@
             //я заметил что первый пункт повышается на 20 много раз в клавиатуре от 30 прибавляем 20 и так до 170
             //таких цепочек 2: одна где высота 240 другая где 262
             //из хорошего я не использовал i и сделал новую технику с += и <= (прочитал что так можно в интернете)
+            
             let color = "#000000"; 
-            let x = 30;
-            let y = 245;
             let keyWidht = 15;
             let height = 15;
-            drawRectangle(color, x, y, keyWidht, height);
-            drawRectangle(color, x + keyWidht + 10, y, keyWidht, height);
-            
+
+            // Внешний цикл: перебирает две твои высоты Y (245 и 262)
+            for (let y of [245, 262]) {
+                
+                // Внутренний цикл: идет по ширине X от 30 до 170 с шагом 20
+                for (let x = 30; x <= 170; x += 20) {
+                    
+                    // Используем твою функцию отрисовки и твои переменные
+                    drawRectangle(color, x, y, keyWidht, height);
+                    
+                }
+            }
+
             //ctx.fillStyle = "#000000";
             //ctx.fillRect(70, 245, 15, 15);
             //ctx.fillRect(90, 245, 15, 15);
@@ -67,7 +76,7 @@
             //ctx.fillRect(130, 262, 15, 15);
             //ctx.fillRect(150, 262, 15, 15);
             //ctx.fillRect(170, 262, 15, 15);
-        }
+        } 
         function drawKeyboard(){
             // клавиатура
             let color = "#808080";
@@ -76,7 +85,8 @@
             let widht = 165;
             let height = 40;
             drawRectangle(color, x, y, widht, height);
-            drawKeys(widht, 8);
+            drawKeys();
+            
         }
         function drawMouse(){
             // мышка
