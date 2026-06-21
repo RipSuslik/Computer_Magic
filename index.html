@@ -33,8 +33,8 @@
             ctx.fillStyle = "#000000";
             ctx.fillRect(60, 220, 100, 10);
         }
-                    function drawKeys(){
-            // как я вижу это на питоне
+        function drawKeys(keyboardY, keyboardHeight){
+            // как я вижу это на питоне 
             //coordinates = [30, 245, 15, 15]
             //while coordinates[0] <= 170
             //      coordinates[0] += 20
@@ -47,17 +47,17 @@
             
             let color = "#000000"; 
             let keyWidht = 15;
-            let height = 15;
-
-            // Внешний цикл: перебирает две твои высоты Y (245 и 262)
-            for (let y of [245, 262]) {
-                
+            let keyHeight = 15;
+            let keySpace = 2;
+            let allKeysHeight = keyHeight * 2 + keySpace; 
+            let keyboardSpace = keyboardHeight / 2 - allKeysHeight / 2;
+            let y1 = keyboardY + keyboardSpace;
+            let y2 = y1 + keyHeight + keySpace;
+            for (let y of [y1, y2]) {
                 // Внутренний цикл: идет по ширине X от 30 до 170 с шагом 20
-                for (let x = 30; x <= 170; x += 20) {
-                    
-                    // Используем твою функцию отрисовки и твои переменные
-                    drawRectangle(color, x, y, keyWidht, height);
-                    
+                for (let x = 30; x <= 170; x += 20) {  
+                    // Используем функцию отрисовки и переменные
+                    drawRectangle(color, x, y, keyWidht, keyHeight);       
                 }
             }
 
@@ -85,7 +85,7 @@
             let widht = 165;
             let height = 40;
             drawRectangle(color, x, y, widht, height);
-            drawKeys();
+            drawKeys(y, height);
             
         }
         function drawMouse(){
@@ -126,9 +126,11 @@
         drawText("[info] шрифты бывают разные, в коде- все символы одинаковой ширины, в нашей картинке - нет", 0, 45 )
         drawText("[info] функции позволяют работать с параметрами, с помощью нее можно дать куску кода имя", 0, 60 )
         drawText("[info] переменные пишутся через let (как в питоне только с let в начале)", 0, 75 );
-        drawText("[info] циклы через while (условие){комманды}", 0, 60 )
-        drawText("[done] весь код в функции (пример функция drawText)", 0, 75 );
-        drawText("[todo] продолжить переписать клавиатуру на цикл если что то непонятно написать о ошибке и закоммитить", 0, 90)
+        drawText("[info] циклы через while (условие){комманды}", 355, 100 )
+        drawText("[done] весь код в функции (пример функция drawText)", 400, 115);
+        drawText("[done] продолжить переписать клавиатуру на цикл если что то непонятно написать о ошибке и закоммитить", 0, 90)
+        drawText("[todo] поправить икс клавиатуры", 400, 130);
+        drawText("[todo] сделать текст в переменные", 400, 145);
         function drawHuman(){
             // человек 
             ctx.beginPath();
