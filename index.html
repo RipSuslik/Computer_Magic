@@ -5,13 +5,30 @@
 </head>
 <body>it may change at every saturday or sunday 16:30 - 18:00 <br />
     <canvas id="scene" width="800" height="500"></canvas>
-    <script> 
+    <script>
+        document.addEventListener('keydown', function(event) {
+            console.log(`Нажата клавиша: ${event.key}, Код: ${event.code}`);
+            if (event.code === 'Digit1') {
+                drawBackground("#c2c2c2"); 
+                drawRobot();
+                drawRemote();
+            }   
+            else if (event.code === 'Digit2') {
+                drawBackground("#c2c2c2")
+                drawBlock();
+                drawKeyboard();
+                drawMonitor();
+                drawMouse();
+            }  
+        });
+
         const canvas = document.getElementById("scene");
         const ctx = canvas.getContext("2d");
-        (function drawBackground(color) {
+        function drawBackground(color) {
             ctx.fillStyle = color;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-        }) ("#c2c2c2");
+        }
+        drawBackground("#c2c2c2");
         function drawText(text, x, y) { 
             ctx.fillStyle = "#321";
             ctx.font = "15px sans-serif"; 
@@ -131,7 +148,9 @@
         drawText("[done] продолжить переписать клавиатуру на цикл если что то непонятно написать о ошибке и закоммитить", 0, 90)
         drawText("[todo] поправить икс клавиатуры", 400, 130);
         drawText("[todo] сделать текст в переменные", 400, 145);
-        drawText("[PRtodo] убрать человечка, добавить пульт и робота", 400, 260);
+        drawText("[done] убрать человечка, добавить пульт и робота", 400, 260);
+        drawText("[goal] ходячие две ноги управляемость с пульта и физическая симуляция", 200, 490);
+        drawText("[todo] сделать изменеия размера с помощью функции для робота и пк", 400, 145);
         function drawHuman(){
             // человек 
             ctx.beginPath();
@@ -176,18 +195,18 @@
             ctx.arc(340, 160, 55, 13, Math.PI * 2, true);
             ctx.fill();         
         }
-        function drawPult(){
+        function drawRemote(){
             ctx.fillRect(200, 350, 30,65);
             ctx.fillStyle = "#000000"
             ctx.fillRect(200, 310, 5,40);
             ctx.fillRect(225, 310, 5,40);
         }
-        drawMonitor();
-        drawKeyboard();
-        drawMouse();
-        drawBlock();
-        drawRobot();
-        drawPult();
+        //drawMonitor();
+        //drawKeyboard();
+        //drawMouse();
+        //drawBlock();
+        //drawRobot();
+        //drawRemote();
         //drawHuman();
         
         
