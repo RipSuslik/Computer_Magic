@@ -153,11 +153,42 @@
             ctx.ellipse(390, 210, 5, 60, Math.PI / 5, 0, 2 * Math.PI);
             ctx.fill();
         }
+        function drawRobot(){
+            
+            
+            ctx.beginPath()
+            ctx.fillStyle = "#444444"
+            ctx.fillRect(235, 200, 110, 100);
+            ctx.fillRect(335, 200, 110, 100);
+            ctx.fillStyle = "#444444"
+            ctx.fillRect(285, 360, 110, 100);
+            ctx.fillRect(335, 200, 110, 100);
+            ctx.beginPath();
+            ctx.fillStyle = "#000000"
+            ctx.fillRect(285, 200, 110, 165);
+            ctx.beginPath();
+            fillStyle = "#333333"
+            ctx.fillRect(335, 360, 5, 100);
+            ctx.beginPath();
+            ctx.fillStyle = "#333333";
+            ctx.fillRect(290, 200, 100, 160);
+            ctx.fillStyle = "#808090";
+            ctx.arc(340, 160, 55, 13, Math.PI * 2, true);
+            ctx.fill();         
+        }
+        function drawPult(){
+            ctx.fillRect(200, 350, 30,65);
+            ctx.fillStyle = "#000000"
+            ctx.fillRect(200, 310, 5,40);
+            ctx.fillRect(225, 310, 5,40);
+        }
         drawMonitor();
         drawKeyboard();
         drawMouse();
         drawBlock();
-        drawHuman();
+        drawRobot();
+        drawPult();
+        //drawHuman();
         
         
         
