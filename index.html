@@ -10,9 +10,9 @@
             console.log(`Нажата клавиша: ${event.key}, Код: ${event.code}`);
             if (event.code === 'Digit1') {
                 drawBackground("#c2c2c2"); 
-                drawRobot();
-                drawRemote();
-                drawSmallComp();
+                //drawRobot();
+                //drawRemote();
+                drawSmallComp(0.5);
 
             }   
             else if (event.code === 'Digit2') {
@@ -24,7 +24,8 @@
             }  
         });
 
-        function drawSmallComp() {
+        function drawSmallComp(scale) {
+            ctx.beginPath();
             drawRectangle("#808080", 150, 400, 10, 20) 
             ctx.fillStyle = "#000000";
             ctx.fillRect(151, 400, 3.5, 7.5);
@@ -42,26 +43,29 @@
             drawSmallKeys(y, height + 10);
             
             // рамка
-            drawRectangle("#000000", 95, 370, 180/4, 110/4);
+            console.log(scale, 180 * scale)
+            drawRectangle("#000000", 95, 370, 180 * scale, 110 * scale);
             // экран       
             ctx.fillStyle = "#4f4f4f";
-            ctx.fillRect(97.5, 372.5, 160/4, 90/4);
+            ctx.fillRect(97.5, 372.5, 160 * scale, 90 * scale);
             // ножка
             ctx.fillStyle = "#000000";
-            ctx.fillRect(97.5 + 97.5/6, 395, 30/4, 20/4);
+            ctx.fillRect(97.5 + 97.5/6, 395, 30 * scale, 20 * scale);
             ctx.fillStyle = "#000000";
-            ctx.fillRect(105, 400, 100/4, 10/4);
+            ctx.fillRect(105, 400, 100 * scale, 10 * scale);
 
-            
+            //блок
+            let blockX = 60;
+            let fanOffsetX = 50;
             ctx.fillStyle = "#333333";
-            ctx.fillRect(60, 370, 100/4, 200/4);
+            ctx.fillRect(blockX, 370, 100 * scale, 200 * scale);
             ctx.beginPath();
             ctx.fillStyle = "#000000"
-            ctx.arc(72.5, 383, 40/4, 0/4, Math.PI * 2, true);
+            ctx.arc(blockX + fanOffsetX * scale, 383, 40 * scale, 0, Math.PI * 2, true);
             ctx.fill();
             ctx.beginPath();
             ctx.fillStyle = "#000000"
-            ctx.arc(72.5, 407, 40/4, 0/4, Math.PI * 2, true);
+            ctx.arc(72.5, 407, 40 * scale, 0, Math.PI * 2, true);
             ctx.fill();
         }
 
@@ -239,7 +243,9 @@
         drawText("[todo] сделать текст в переменные", 400, 145);
         drawText("[done] убрать человечка, добавить пульт и робота", 400, 260);
         drawText("[goal] ходячие две ноги управляемость с пульта и физическая симуляция", 200, 490);
-        drawText("[todo] сделать изменеия размера с помощью функции для робота и пк", 400, 145);
+        drawText("[todo] сделать изменеия размера с помощью функции для робота и пк", 300, 160);
+        drawText("[todo] сделать текст в переменные", 400, 175);
+        drawText("[todo] блок в пропорциях", 400, 190);
         function drawHuman(){
             // человек 
             ctx.beginPath();
@@ -297,7 +303,7 @@
         //drawRobot();
         //drawRemote();
         //drawHuman();
-        
+        drawSmallComp(0.25);
         
         
         
