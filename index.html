@@ -12,6 +12,8 @@
                 drawBackground("#c2c2c2"); 
                 drawRobot();
                 drawRemote();
+                drawSmallComp();
+
             }   
             else if (event.code === 'Digit2') {
                 drawBackground("#c2c2c2")
@@ -21,6 +23,47 @@
                 drawMouse();
             }  
         });
+
+        function drawSmallComp() {
+            drawRectangle("#808080", 150, 400, 10, 20) 
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(151, 400, 3.5, 7.5);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(156, 400, 3.5, 7.5);
+            ctx.ellipse(155.1, 405, 0.5, 5, 0, 0, 2 * Math.PI);
+            ctx.fill();
+
+            let color = "#808080";
+            let x = 101;
+            let y = 410;
+            let widht = 40;
+            let height = 10;
+            drawRectangle(color, x, y, widht, height);
+            drawSmallKeys(y, height + 10);
+            
+            // рамка
+            drawRectangle("#000000", 95, 370, 180/4, 110/4);
+            // экран       
+            ctx.fillStyle = "#4f4f4f";
+            ctx.fillRect(97.5, 372.5, 160/4, 90/4);
+            // ножка
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(97.5 + 97.5/6, 395, 30/4, 20/4);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(105, 400, 100/4, 10/4);
+
+            
+            ctx.fillStyle = "#333333";
+            ctx.fillRect(60, 370, 100/4, 200/4);
+            ctx.beginPath();
+            ctx.fillStyle = "#000000"
+            ctx.arc(72.5, 383, 40/4, 0/4, Math.PI * 2, true);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.fillStyle = "#000000"
+            ctx.arc(72.5, 407, 40/4, 0/4, Math.PI * 2, true);
+            ctx.fill();
+        }
 
         const canvas = document.getElementById("scene");
         const ctx = canvas.getContext("2d");
@@ -77,6 +120,52 @@
                     drawRectangle(color, x, y, keyWidht, keyHeight);       
                 }
             }
+            
+
+            //ctx.fillStyle = "#000000";
+            //ctx.fillRect(70, 245, 15, 15);
+            //ctx.fillRect(90, 245, 15, 15);
+            //ctx.fillRect(110, 245, 15, 15);
+            //ctx.fillRect(130, 245, 15, 15);
+            //ctx.fillRect(150, 245, 15, 15);
+            //ctx.fillRect(170, 245, 15, 15);
+            //ctx.fillRect(30, 262, 15, 15);
+            //ctx.fillRect(50, 262, 15, 15);
+            //ctx.fillRect(70, 262, 15, 15);
+            //ctx.fillRect(90, 262, 15, 15);
+            //ctx.fillRect(110, 262, 15, 15);
+            //ctx.fillRect(130, 262, 15, 15);
+            //ctx.fillRect(150, 262, 15, 15);
+            //ctx.fillRect(170, 262, 15, 15);
+        }
+        function drawSmallKeys(keyboardY, keyboardHeight){
+            // как я вижу это на питоне 
+            //coordinates = [30, 245, 15, 15]
+            //while coordinates[0] <= 170
+            //      coordinates[0] += 20
+            //      while coordinates[1] <= 262
+            //          coordinates[1] += 17
+            //пока что на новом языке я не знаю как писать циклы но я попытался
+            //я заметил что первый пункт повышается на 20 много раз в клавиатуре от 30 прибавляем 20 и так до 170
+            //таких цепочек 2: одна где высота 240 другая где 262
+            //из хорошего я не использовал i и сделал новую технику с += и <= (прочитал что так можно в интернете)
+            
+            let color = "#000000"; 
+            let keyWidht = 15/4;
+            let keyHeight = 15/4;
+            let keySpace = 2/4;
+            let allKeysHeight = keyHeight * 2/4 + keySpace; 
+            let keyboardSpace = keyboardHeight / 2/4 - allKeysHeight / 2;
+            let y1 = keyboardY + keyboardSpace;
+            let y2 = y1 + keyHeight + keySpace;
+            for (let y of [y1, y2]) {
+                // Внутренний цикл: идет по ширине X от 30 до 170 с шагом 20
+                for (let x = 30/4; x <= 170/4; x += 20/4) {  
+                    // Используем функцию отрисовки и переменные
+                    drawRectangle(color, x + 95, y, keyWidht - 1, keyHeight - 0.5);       
+                }
+            }
+            
 
             //ctx.fillStyle = "#000000";
             //ctx.fillRect(70, 245, 15, 15);
