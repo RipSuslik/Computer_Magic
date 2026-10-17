@@ -17,57 +17,69 @@
             }   
             else if (event.code === 'Digit2') {
                 drawBackground("#c2c2c2")
-                drawBlock();
-                drawKeyboard();
-                drawMonitor();
-                drawMouse();
+                // drawBlock();
+                // drawKeyboard();
+                // drawMonitor();
+                // drawMouse();
+                drawSmallComp(0.25);
             }  
         });
 
         function drawSmallComp(scale) {
-            ctx.beginPath();
-            drawRectangle("#808080", 150, 400, 10, 20) 
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(151, 400, 3.5, 7.5);
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(156, 400, 3.5, 7.5);
-            ctx.ellipse(155.1, 405, 0.5, 5, 0, 0, 2 * Math.PI);
-            ctx.fill();
+            // ctx.beginPath();
+            // drawRectangle("#808080", 150, 400, 10, 20) 
+            // ctx.fillStyle = "#000000";
+            // ctx.fillRect(151, 400, 3.5, 7.5);
+            // ctx.fillStyle = "#000000";
+            // ctx.fillRect(156, 400, 3.5, 7.5);
+            // ctx.ellipse(155.1, 405, 0.5, 5, 0, 0, 2 * Math.PI);
+            // ctx.fill();
 
-            let color = "#808080";
-            let x = 101;
-            let y = 410;
-            let widht = 40;
-            let height = 10;
-            drawRectangle(color, x, y, widht, height);
-            drawSmallKeys(y, height + 10);
+            // let color = "#808080";
+            // let x = 101;
+            // let y = 410;
+            // let widht = 40;
+            // let height = 10;
+            // drawRectangle(color, x, y, widht, height);
+            // drawSmallKeys(y, height + 10);
             
             // рамка
-            console.log(scale, 180 * scale)
-            drawRectangle("#000000", 95, 370, 180 * scale, 110 * scale);
+            //console.log(scale, 180 * scale)
+            //drawRectangle("#000000", 95, 370, 180 * scale, 110 * scale);
             // экран       
-            ctx.fillStyle = "#4f4f4f";
-            ctx.fillRect(97.5, 372.5, 160 * scale, 90 * scale);
+            //ctx.fillStyle = "#4f4f4f";
+            //ctx.fillRect(97.5, 372.5, 160 * scale, 90 * scale);
             // ножка
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(97.5 + 97.5/6, 395, 30 * scale, 20 * scale);
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(105, 400, 100 * scale, 10 * scale);
+            // ctx.fillStyle = "#000000";
+            // ctx.fillRect(97.5 + 97.5/6, 395, 30 * scale, 20 * scale);
+            // ctx.fillStyle = "#000000";
+            // ctx.fillRect(105, 400, 100 * scale, 10 * scale);
 
             //блок
-            let blockX = 60;
-            let blockY = 1480;
-            let fanOffsetX = 50;
-            let fanoffsetX2 = 50; 
+
+            //корпус
+            let hullX = 60;
+            let hullY = 370;
+            let hullWidth = 100;
+            let hullHeight = 200;   
             ctx.fillStyle = "#333333";
-            ctx.fillRect(blockX, blockY * scale, 100 * scale, 200 * scale);
+            ctx.fillRect(hullX, hullY, hullWidth * scale, hullHeight * scale);
+            
+            //верхний фен
+            let fanCentreOffsetX = hullWidth / 2;
+            let fanRadius = 40;
+            let offsetBetweenHullAndFan = hullWidth / 2 - fanRadius;
+            let upperFanCentreOffsetY = fanRadius + offsetBetweenHullAndFan;
+            let lowerFanCentreOffsetY = hullHeight - fanRadius - offsetBetweenHullAndFan
             ctx.beginPath();
-            ctx.fillStyle = "#000000"
-            ctx.arc(blockX + fanOffsetX * scale, 383, 40 * scale, 0, Math.PI * 2, true);
+            ctx.fillStyle = "#000000" 
+            ctx.arc(hullX + fanCentreOffsetX * scale, hullY + upperFanCentreOffsetY * scale, fanRadius * scale, 0, Math.PI * 2, true);
             ctx.fill();
+
+            //нижний фен
             ctx.beginPath();
-            ctx.fillStyle = "#000000"
-            ctx.arc(blockX + fanoffsetX2 * scale, 407, 40 * scale, 0, Math.PI * 2, true);
+            ctx.fillStyle = "#000000" 
+            ctx.arc(hullX + fanCentreOffsetX * scale, hullY + lowerFanCentreOffsetY * scale, fanRadius * scale, 0, Math.PI * 2, true);
             ctx.fill();
         }
 
@@ -87,7 +99,7 @@
             ctx.fillStyle = color;
             ctx.fillRect(x, y, widht, height);
         }
-        function drawMonitor(){
+        function drawMonitor(){ 
             // рамка
             drawRectangle("#000000", 20, 100, 180, 110);
             // экран       
@@ -212,7 +224,16 @@
         }
         function drawBlock(){
             // блок
-            ctx.fillStyle = "#333333";
+            // ctx.fillStyle = "#333333";
+            // ctx.fillRect(30, 290, 100, 200);
+            // ctx.beginPath();
+            // ctx.fillStyle = "#000000"
+            // ctx.arc(80, 340, 40, 0, Math.PI * 2, true);
+            // ctx.fill();
+            // ctx.beginPath();
+            // ctx.fillStyle = "#000000"
+            // ctx.arc(80, 435, 40, 0, Math.PI * 2, true);
+            ctx.fill();ctx.fillStyle = "#333333";
             ctx.fillRect(30, 290, 100, 200);
             ctx.beginPath();
             ctx.fillStyle = "#000000"
@@ -222,16 +243,7 @@
             ctx.fillStyle = "#000000"
             ctx.arc(80, 435, 40, 0, Math.PI * 2, true);
             ctx.fill();
-            ctx.fillStyle = "#333333";
-            ctx.fillRect(30, 290, 100, 200);
-            ctx.beginPath();
-            ctx.fillStyle = "#000000"
-            ctx.arc(80, 340, 40, 0, Math.PI * 2, true);
-            ctx.fill();
-            ctx.beginPath();
-            ctx.fillStyle = "#000000"
-            ctx.arc(80, 435, 40, 0, Math.PI * 2, true);
-            ctx.fill();
+            
         }
         drawText("[done] КОМП ПОЛНОСТЬЮ доделать: мышка, клавиатура, системный блок, ножка монитора", 0, 15);
         drawText("[info] ffffff - белый 000000 - черный первые 2 - красный, вторые - зеленый, третие - синй", 0, 30)
@@ -259,7 +271,7 @@
             ctx.beginPath();
             ctx.ellipse(315, 380, 5, 60, Math.PI / 5, 0, 2 * Math.PI);
             ctx.fill();
-            ctx.beginPath();
+            ctx.beginPath(); 
             ctx.ellipse(386, 380, 5, 60, -Math.PI / 5, 0, 2 * Math.PI);
             ctx.fill();
             ctx.beginPath();
