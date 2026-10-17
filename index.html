@@ -56,16 +56,18 @@
 
             //блок
             let blockX = 60;
+            let blockY = 1480;
             let fanOffsetX = 50;
+            let fanoffsetX2 = 50; 
             ctx.fillStyle = "#333333";
-            ctx.fillRect(blockX, 370, 100 * scale, 200 * scale);
+            ctx.fillRect(blockX, blockY * scale, 100 * scale, 200 * scale);
             ctx.beginPath();
             ctx.fillStyle = "#000000"
             ctx.arc(blockX + fanOffsetX * scale, 383, 40 * scale, 0, Math.PI * 2, true);
             ctx.fill();
             ctx.beginPath();
             ctx.fillStyle = "#000000"
-            ctx.arc(72.5, 407, 40 * scale, 0, Math.PI * 2, true);
+            ctx.arc(blockX + fanoffsetX2 * scale, 407, 40 * scale, 0, Math.PI * 2, true);
             ctx.fill();
         }
 
