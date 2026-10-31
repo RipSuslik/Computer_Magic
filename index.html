@@ -24,16 +24,39 @@
                 drawSmallComp(0.25);
             }  
         });
+        function drawBlock(scale, x, y, width) {
+                //корпус
+                let hullX = x;
+                let hullY = y;
+                let hullWidth = width;
+                let hullHeight = width * 2;   
+                ctx.fillStyle = "#333333";
+                ctx.fillRect(hullX, hullY, hullWidth * scale, hullHeight * scale);
+                
+                //верхний фен
+                let fanCentreOffsetX = hullWidth / 2;
+                let fanRadius = hullWidth * 0.4;
+                let offsetBetweenHullAndFan = hullWidth / 2 - fanRadius;
+                let upperFanCentreOffsetY = fanRadius + offsetBetweenHullAndFan;
+                let lowerFanCentreOffsetY = hullHeight - fanRadius - offsetBetweenHullAndFan
+                ctx.beginPath();
+                ctx.fillStyle = "#000000" 
+                ctx.arc(hullX + fanCentreOffsetX * scale, hullY + upperFanCentreOffsetY * scale, fanRadius * scale, 0, Math.PI * 2, true);
+                ctx.fill();
 
+                //нижний фен
+                ctx.beginPath();
+                ctx.fillStyle = "#000000" 
+                ctx.arc(hullX + fanCentreOffsetX * scale, hullY + lowerFanCentreOffsetY * scale, fanRadius * scale, 0, Math.PI * 2, true);
+                ctx.fill();
+            }
         function drawSmallComp(scale) {
-            // ctx.beginPath();
-            // drawRectangle("#808080", 150, 400, 10, 20) 
-            // ctx.fillStyle = "#000000";
-            // ctx.fillRect(151, 400, 3.5, 7.5);
-            // ctx.fillStyle = "#000000";
-            // ctx.fillRect(156, 400, 3.5, 7.5);
-            // ctx.ellipse(155.1, 405, 0.5, 5, 0, 0, 2 * Math.PI);
-            // ctx.fill();
+            drawBlock(scale, 60, 370, 100);
+            // мышка  
+            drawRectangle("#808080", 150, 400, 10, 20);
+            drawRectangle("#000000", 151, 400, 3.5, 7.5); 
+            drawRectangle("#000000", 156, 400, 3.5, 7.5);
+            drawEllipse("#000000", 155.1, 405, 0.5, 5); 
 
             // let color = "#808080";
             // let x = 101;
@@ -56,33 +79,9 @@
             // ctx.fillRect(105, 400, 100 * scale, 10 * scale);
 
             //блок
-
-            //корпус
-            let hullX = 60;
-            let hullY = 370;
-            let hullWidth = 100;
-            let hullHeight = 200;   
-            ctx.fillStyle = "#333333";
-            ctx.fillRect(hullX, hullY, hullWidth * scale, hullHeight * scale);
             
-            //верхний фен
-            let fanCentreOffsetX = hullWidth / 2;
-            let fanRadius = 40;
-            let offsetBetweenHullAndFan = hullWidth / 2 - fanRadius;
-            let upperFanCentreOffsetY = fanRadius + offsetBetweenHullAndFan;
-            let lowerFanCentreOffsetY = hullHeight - fanRadius - offsetBetweenHullAndFan
-            ctx.beginPath();
-            ctx.fillStyle = "#000000" 
-            ctx.arc(hullX + fanCentreOffsetX * scale, hullY + upperFanCentreOffsetY * scale, fanRadius * scale, 0, Math.PI * 2, true);
-            ctx.fill();
-
-            //нижний фен
-            ctx.beginPath();
-            ctx.fillStyle = "#000000" 
-            ctx.arc(hullX + fanCentreOffsetX * scale, hullY + lowerFanCentreOffsetY * scale, fanRadius * scale, 0, Math.PI * 2, true);
-            ctx.fill();
-        }
-
+        
+        }    
         const canvas = document.getElementById("scene");
         const ctx = canvas.getContext("2d");
         function drawBackground(color) {
@@ -98,6 +97,11 @@
         function drawRectangle(color, x, y, widht, height){
             ctx.fillStyle = color;
             ctx.fillRect(x, y, widht, height);
+        }
+        function drawEllipse (color, x, y, radiusX, radiusY){
+            ctx.fillStyle = color;
+            ctx.ellipse(x, y, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            ctx.fill();   
         }
         function drawMonitor(){ 
             // рамка
@@ -222,29 +226,29 @@
             ctx.ellipse(209.5, 254, 1, 10, 0, 0, 2 * Math.PI);
             ctx.fill();
         }
-        function drawBlock(){
-            // блок
-            // ctx.fillStyle = "#333333";
-            // ctx.fillRect(30, 290, 100, 200);
-            // ctx.beginPath();
-            // ctx.fillStyle = "#000000"
-            // ctx.arc(80, 340, 40, 0, Math.PI * 2, true);
-            // ctx.fill();
-            // ctx.beginPath();
-            // ctx.fillStyle = "#000000"
-            // ctx.arc(80, 435, 40, 0, Math.PI * 2, true);
-            ctx.fill();ctx.fillStyle = "#333333";
-            ctx.fillRect(30, 290, 100, 200);
-            ctx.beginPath();
-            ctx.fillStyle = "#000000"
-            ctx.arc(80, 340, 40, 0, Math.PI * 2, true);
-            ctx.fill();
-            ctx.beginPath();
-            ctx.fillStyle = "#000000"
-            ctx.arc(80, 435, 40, 0, Math.PI * 2, true);
-            ctx.fill();
+        // function drawBlock(){
+        //     // блок
+        //     // ctx.fillStyle = "#333333";
+        //     // ctx.fillRect(30, 290, 100, 200);
+        //     // ctx.beginPath();
+        //     // ctx.fillStyle = "#000000"
+        //     // ctx.arc(80, 340, 40, 0, Math.PI * 2, true);
+        //     // ctx.fill();
+        //     // ctx.beginPath();
+        //     // ctx.fillStyle = "#000000"
+        //     // ctx.arc(80, 435, 40, 0, Math.PI * 2, true);
+        //     ctx.fill();ctx.fillStyle = "#333333";
+        //     ctx.fillRect(30, 290, 100, 200);
+        //     ctx.beginPath();
+        //     ctx.fillStyle = "#000000"
+        //     ctx.arc(80, 340, 40, 0, Math.PI * 2, true);
+        //     ctx.fill();
+        //     ctx.beginPath();
+        //     ctx.fillStyle = "#000000"
+        //     ctx.arc(80, 435, 40, 0, Math.PI * 2, true);
+        //     ctx.fill();
             
-        }
+        // }
         drawText("[done] КОМП ПОЛНОСТЬЮ доделать: мышка, клавиатура, системный блок, ножка монитора", 0, 15);
         drawText("[info] ffffff - белый 000000 - черный первые 2 - красный, вторые - зеленый, третие - синй", 0, 30)
         drawText("[info] шрифты бывают разные, в коде- все символы одинаковой ширины, в нашей картинке - нет", 0, 45 )
